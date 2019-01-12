@@ -17,7 +17,9 @@ pipeline {
               scannerHome = tool 'SonarQubeScanner'
             }
 
-            withSonarQubeEnv 'sonarqube'
+            withSonarQubeEnv 'sonarqube' {
+                 sh 'mvn clean package sonar:sonar'
+            }
             waitForQualityGate true
           }
         }
