@@ -13,6 +13,10 @@ pipeline {
       parallel {
         stage('Code Analysis') {
           steps {
+            script {
+          // requires SonarQube Scanner 2.8+
+          scannerHome = tool 'SonarQubeScanner'
+           }
             withSonarQubeEnv('sonarqube') {
               sh 'C:\\\\sonarqube\\\\bin\\\\sonar-scanner'
             }
