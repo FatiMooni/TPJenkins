@@ -9,11 +9,6 @@ pipeline {
         archiveArtifacts(onlyIfSuccessful: true, artifacts: 'build/libs/*.jar')
       }
     }
-    stage('Mail Notification') {
-      steps {
-        mail(subject: 'Build Done', to: 'ff_abdiche@esi.dz', body: 'the Build has done')
-      }
-    }
     stage('Code Analysis') {
       parallel {
         stage('Code Analysis') {
