@@ -4,7 +4,7 @@ pipeline {
     stage('Build') {
       steps {
         sh 'gradle build'
-        sh 'gradle javadoc'
+        sh 'javadoc'
         sh 'gradle archive'
       }
     }
