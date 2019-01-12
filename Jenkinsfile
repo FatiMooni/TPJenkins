@@ -17,10 +17,7 @@ pipeline {
               scannerHome = tool 'SonarQubeScanner'
             }
 
-            withSonarQubeEnv('sonarqube')/* {
-              sh 'C:\\\\sonarqube\\\\bin\\\\sonar-scanner'
-            }*/
-
+            withSonarQubeEnv 'sonarqube'
             waitForQualityGate true
           }
         }
