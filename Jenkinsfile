@@ -7,7 +7,6 @@ pipeline {
         sh 'gradle jar'
         sh 'gradle javadoc'
         archiveArtifacts(onlyIfSuccessful: true, artifacts: 'build/libs/*.jar')
-        archiveArtifacts(artifacts: 'build/docs/', onlyIfSuccessful: true)
       }
     }
     stage('Mail Notification') {
