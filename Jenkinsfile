@@ -4,8 +4,10 @@ pipeline {
     stage('Build') {
       steps {
         sh 'gradle build'
-        sh 'javadoc'
-        sh 'gradle archive'
+        sh 'gradle jar'
+        sh 'gradle javadoc'
+        archiveArtifacts(onlyIfSuccessful: true, artifacts: 'build/libs/*.jar')
+        archiveArtifacts(artifacts: 'build/docs/javadoc', onlyIfSuccessful: true)
       }
     }
     stage('Mail Notification') {
