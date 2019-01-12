@@ -18,28 +18,28 @@ pipeline {
             }
 
             withSonarQubeEnv 'sonarqube' {
-                 sh 'mvn clean package sonar:sonar'
+                               sh 'mvn clean package sonar:sonar'
+                          }
+              waitForQualityGate true
             }
-            waitForQualityGate true
           }
-        }
-        stage('Test Reporting') {
-          steps {
-            sh 'gradle test'
-            jacoco(buildOverBuild: true)
+          stage('Test Reporting') {
+            steps {
+              sh 'gradle test'
+              jacoco(buildOverBuild: true)
+            }
           }
         }
       }
-    }
-    stage('Deployement') {
-      steps {
-        sh 'gradle uploadArchives'
+      stage('Deployement') {
+        steps {
+          sh 'gradle uploadArchives'
+        }
       }
-    }
-    stage('Slack Notifcations') {
-      steps {
-        slackSend()
+      stage('Slack Notifcations') {
+        steps {
+          slackSend()
+        }
       }
     }
   }
-}
