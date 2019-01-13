@@ -18,7 +18,7 @@ pipeline {
             }
 
             withSonarQubeEnv('sonarqube') {
-              sh 'D:\\2SIL\\TOOLS\\TPsGit\\TP\\SonarAnalyse\\sonar-scanner-cli-3.2.0.1227-windows\\sonar-scanner-3.2.0.1227-windows\\bin\\sonar-scanner.bat'
+              sh 'D:\\\\2SIL\\\\TOOLS\\\\TPsGit\\\\TP\\\\SonarAnalyse\\\\sonar-scanner-cli-3.2.0.1227-windows\\\\sonar-scanner-3.2.0.1227-windows\\\\bin\\\\sonar-scanner.bat'
             }
 
             waitForQualityGate true
