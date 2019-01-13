@@ -39,7 +39,7 @@ pipeline {
     }
     stage('Slack Notifcations') {
       steps {
-        slackSend()
+        slackSend(attachments: 'Everything Is Great !', failOnError: true, color: 'red', channel: 'jenkins', message: 'the uploading is done succefully !')
       }
     }
   }
