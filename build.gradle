@@ -34,42 +34,9 @@ repositories {
     // You can declare any Maven/Ivy/file repository here.
     jcenter()
 }
-jacocoTestCoverageVerification {
-     violationRules {
-         rule {
-            limit {
-               minimum = 0.8
-            }
-         }
-     }
-}
 
-jacocoTestReport {
-    reports {
-        xml.enabled false
-        csv.enabled false
-        html.destination file("${buildDir}/jacocoHtml")
-    }
-}
+ 
 
-test.finalizedBy "jacocoTestCoverageVerification",  "jacocoTestReport" 
-
-task archive (type: Copy){
-
-			from ('build/docs/javadoc'){
-			into 'Documentation' 
-			}
-		
-			from ('build/libs')
-			{
-			  into 'API'
-			}
-			
-			into "./Gradle/MatrixRelease/Matrix_v_${version}"
-			
-}
-
-archive.dependsOn "build"
 
 uploadArchives {
     repositories {
