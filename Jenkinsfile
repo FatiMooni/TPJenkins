@@ -6,12 +6,12 @@ pipeline {
      
       post {
         failure {
-          mail(subject: 'Build Finish', body: 'le build a echouee', to: 'fi_neddar@esi.dz')
+          mail(subject: 'Build DONE', body: 'The build has not been succesful', to: 'ff_abdiche@esi.dz')
 
         }
 
         success {
-          mail(subject: 'Build Finish', body: 'le build a terminer', to: 'fi_neddar@esi.dz')
+          mail(subject: 'Build DONE', body: 'The build has been succesfully done', to: 'ff_abdiche@esi.dz')
 
         }
 
