@@ -2,8 +2,6 @@ pipeline {
   agent any
   stages {
     stage('Build') {
-      
-     
       post {
         failure {
           mail(subject: 'Build DONE', body: 'The build has not been succesful', to: 'ff_abdiche@esi.dz')
