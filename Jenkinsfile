@@ -44,11 +44,22 @@ pipeline {
       }
     }
     stage('Deployement') {
+      when{
+            NOT{
+              changeRequest target : 'master'
+            }
+          }
       steps {
         sh 'gradle uploadArchives'
       }
     }
     stage('Slack Notifcations') {
+      
+      when{
+            NOT{
+              changeRequest target : 'master'
+            }
+          }
       steps {
         slackSend(failOnError: true, message: 'the uploading is done succefully !')
       }
