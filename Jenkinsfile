@@ -2,6 +2,20 @@ pipeline {
   agent any
   stages {
     stage('Build') {
+      
+     
+      post {
+        failure {
+          mail(subject: 'Build Finish', body: 'le build a echouee', to: 'fi_neddar@esi.dz')
+
+        }
+
+        success {
+          mail(subject: 'Build Finish', body: 'le build a terminer', to: 'fi_neddar@esi.dz')
+
+        }
+
+      }
       steps {
         sh 'gradle build'
         sh 'gradle jar'
